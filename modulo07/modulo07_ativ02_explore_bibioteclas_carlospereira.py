@@ -1,18 +1,36 @@
-nome = "João Silva"
+def calcular_media():
+    print("=== SISTEMA DE NOTAS ===")
+    
+    # Solicita o nome do aluno
+    nome = input("Digite o nome do aluno: ").strip()
+    
+    # Loop para garantir entrada correta das 3 notas
+    notas = []
+    for i in range(1, 4):
+        while True:
+            try:
+                nota = float(input(f"Digite a {i}ª nota (0 a 10): "))
+                if 0 <= nota <= 10:
+                    notas.append(nota)
+                    break
+                else:
+                    print("Por favor, digite uma nota entre 0 e 10.")
+            except ValueError:
+                print("Entrada inválida! Digite apenas números.")
 
-nota1 = 4
-nota2 = 3
-nota3 = 5
+    # Cálculo da média
+    media = sum(notas) / len(notas)
+    
+    # Exibição do resultado
+    print("\n---------------------------")
+    print(f"Aluno: {nome}")
+    print(f"Média final: {media:.1f}")
+    
+    if media >= 6.0:
+        print("Status: APROVADO! 🎉")
+    else:
+        print("Status: REPROVADO. ❌")
+    print("---------------------------")
 
-media = (nota1 + nota2 + nota3) / 3
-
-print("Aluno:", nome)
-print("Nota 1:", nota1)
-print("Nota 2:", nota2)
-print("Nota 3:", nota3)
-print("Média:", media)
-
-if media <= 4:
-    print("Resultado: Reprovado ❌")
-else:
-    print("Resultado: Aprovado ✅")
+if __name__ == "__main__":
+    calcular_media()
